@@ -1,56 +1,64 @@
-﻿using log4net;
+﻿using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using TestForSmol.Models;
 
 namespace TestForSmol
 {
     public class Writer
     {
-        // ToDo: определить чтоб ILog записывал файл на рабочий стол 
-        // ToDo: Объединить метод WriteAboutOrder с методом WriteAboutOrderInLogger в один 
-
-        private readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public void WriteAboutOrder(PurchaseOrder order, string partNumber = "926-AA")
+        public static void WriteAboutDeliveredOrders(AllPurchaseOrders deliveredOrders, OutputMethod outputMethod)
         {
-            if (order != null)
+            if (deliveredOrders is null)
+                return;
+            // слишком тяжело
+            var items = new List<Item>();
+            deliveredOrders.PurchaseOrders.ForEach(x => items.AddRange(x.Items));
+
+            var grouped = items.GroupBy(x => x.ProductName);
+
+            foreach (var group in grouped)
             {
-                var name = order.OrderAddress.Name;
-                var deliveriDate = order.EstimatedDeliveryDate;
-                var count = order.Items.Where(x => x.PartNumber == partNumber).Sum(x => x.Quantity);
-                var price = order.Items.Sum(x => x.Price);
-                Console.WriteLine($" Имя заказчика: {name}\n" +
-                                  $" день недели ориентировочной даты доставки: {deliveriDate}\n" +
-                                  $" количество единиц товара, у которого PartNumber=\"926-AA\": {count}\n" +
-                                  $" стоимость заказа: {price}");
+                if (outputMethod is OutputMethod.Log)
+                    Log.Information($"{group.Key} - {group.Sum(x => x.Quantity)}шт.");
+                if (outputMethod is OutputMethod.Console)
+                    Console.WriteLine($"{group.Key} - {group.Sum(x => x.Quantity)}шт.");
             }
         }
 
-        public void WriteAboutDeliveredOrders(AllPurchaseOrders deliveredOrders)
+        public static void WriteAboutOrder(PurchaseOrder order, OutputMethod outputMethod, string partNumber)
         {
-            // ToDo: нужно сгуппировать по имени элемента и вывестри сумму элементов с этим именем 
-            if (deliveredOrders != null)
-                foreach (var item in deliveredOrders.PurchaseOrders)
-                    foreach (var prod in item.Items)
-                        Console.WriteLine($" {prod.ProductName}-{prod.Quantity}шт.");
+            if (order is null)
+                return;
+
+            var name = order.OrderAddress.Name;
+            var deliveriDate = order.EstimatedDeliveryDate;
+            var count = order.Items.Where(x => x.PartNumber == partNumber).Sum(x => x.Quantity);
+            var price = order.Items.Sum(x => x.Price);
+
+            if (outputMethod is OutputMethod.Log)
+            {
+                Log.Information($"Имя заказчика: {name}\n" +
+                              $"День недели ориентировочной даты доставки: {deliveriDate}\n" +
+                              $"Количество единиц товара, у которого PartNumber = {partNumber}: {count}\n" +
+                              $"Стоимость заказа: {price}");
+                Console.WriteLine("Логгирован");
+            }
+
+            if (outputMethod is OutputMethod.Console)
+                Console.WriteLine($"Имя заказчика: {name}\n" +
+                                  $"День недели ориентировочной даты доставки: {deliveriDate}\n" +
+                                  $"Количество единиц товара, у которого PartNumber = {partNumber}: {count}\n" +
+                                  $"Стоимость заказа: {price}");
+
         }
 
-        public void WriteAboutOrderInLogger(PurchaseOrder order, string partNumber = "926-AA")
+        public enum OutputMethod
         {
-            if (order != null)
-            {
-                var name = order.OrderAddress.Name;
-                var deliveriDate = order.EstimatedDeliveryDate;
-                var count = order.Items.Where(x => x.PartNumber == partNumber).Sum(x => x.Quantity);
-                var price = order.Items.Sum(x => x.Price);
-                Log.Info($" Имя заказчика: {name}\n" +
-                                  $" день недели ориентировочной даты доставки: {deliveriDate}\n" +
-                                  $" количество единиц товара, у которого PartNumber=\"926-AA\": {count}\n" +
-                                  $" стоимость заказа: {price}");
-            }
+            Console,
+            Log
         }
-    } 
+    }
 }
 

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0"?>
+<PurchaseOrders>
+	<PurchaseOrder PurchaseOrderNumber="99503" OrderDate="2020-12-12">
+		<Address Type="Shipping">
+			<Name>Ivan Petrov</Name>
+			<Street>Nikolaev Street</Street>
+			<City>Smolensk</City>
+			<Region>Smolensk region</Region>
+			<Zip>214004</Zip>
+			<Country>Russia</Country>
+		</Address>
+		<DeliveryNotes>Desired delivery time: after 6.00 pm</DeliveryNotes>
+		<EstimatedDeliveryDate>2022-12-21</EstimatedDeliveryDate>
+		<Items>
+			<Item PartNumber="872-AA">
+				<ProductName>Christmas tree</ProductName>
+				<Quantity>1</Quantity>
+				<Price>11999</Price>
+			</Item>
+			<Item PartNumber="926-AA">
+				<ProductName>Сhristmas tree toys set</ProductName>
+				<Quantity>3</Quantity>
+				<Price>435.70</Price>
+			</Item>
+		</Items>
+	</PurchaseOrder>
+	<PurchaseOrder PurchaseOrderNumber="99503" OrderDate="2020-12-10">
+		<Address Type="Shipping">
+			<Name>Petr Ivanov</Name>
+			<Street>Gagarin Street</Street>
+			<City>Smolensk</City>
+			<Region>Smolensk region</Region>
+			<Zip>214004</Zip>
+			<Country>Russia</Country>
+		</Address>
+		<EstimatedDeliveryDate>2022-12-20</EstimatedDeliveryDate>
+		<Items>
+			<Item PartNumber="123-AA">
+				<ProductName>Packaging paper</ProductName>
+				<Quantity>2</Quantity>
+				<Price>346</Price>
+				<Unit>m</Unit>
+			</Item>
+			<Item PartNumber="789-AA">
+				<ProductName>Сhristmas tree toys set</ProductName>
+				<Quantity>8</Quantity>
+				<Price>435.70</Price>
+			</Item>
+		</Items>
+	</PurchaseOrder>
+	<PurchaseOrder PurchaseOrderNumber="99503" OrderDate="2020-12-01">
+		<Address Type="Shipping">
+			<Name>Sergey Semenov</Name>
+			<Street>Nahimov Street</Street>
+			<City>Smolensk</City>
+			<Region>Smolensk region</Region>
+			<Zip>214004</Zip>
+			<Country>Russia</Country>
+		</Address>
+		<EstimatedDeliveryDate>2022-12-15</EstimatedDeliveryDate>
+		<Items>
+			<Item PartNumber="658-AA">
+				<ProductName>Christmas tree</ProductName>
+				<Quantity>1</Quantity>
+				<Price>11999</Price>
+			</Item>
+			<Item PartNumber="888-AA">
+				<ProductName>Children skates</ProductName>
+				<Quantity>1</Quantity>
+				<Price>5100</Price>
+				<Size>26</Size>
+			</Item>
+		</Items>
+	</PurchaseOrder>
+</PurchaseOrders>

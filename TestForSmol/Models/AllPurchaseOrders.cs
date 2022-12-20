@@ -7,6 +7,6 @@ namespace TestForSmol.Models
     public class AllPurchaseOrders
     {
         [XmlElement("PurchaseOrder")]
-        public List<PurchaseOrder> PurchaseOrders { get; set; }
+        public List<PurchaseOrder> PurchaseOrders { get; set; } = new List<PurchaseOrder>();
     }
 }

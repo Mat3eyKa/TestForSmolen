@@ -6,10 +6,10 @@ namespace TestForSmol.Models
     public class Item
     {
         [XmlAttribute("PartNumber")]
-        public string PartNumber { get; set; }
+        public string PartNumber { get; set; } = string.Empty;
 
         [XmlElement("ProductName")]
-        public string ProductName { get; set; }
+        public string ProductName { get; set; } = string.Empty;
 
         [XmlElement("Quantity")]
         public int Quantity { get; set; }

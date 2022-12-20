@@ -6,19 +6,19 @@ namespace TestForSmol.Models
     public class Address
     {
         [XmlAttribute("Type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         [XmlElement("Name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [XmlElement("Country")]
-        public string Country { get; set; }
+        public string Country { get; set; } = string.Empty;
 
         [XmlElement("Region")]
-        public string Region { get; set; }
+        public string Region { get; set; } = string.Empty;
 
         [XmlElement("Street")]
-        public string Street { get; set; }
+        public string Street { get; set; } = string.Empty;
 
         [XmlElement("Zip")]
         public int Zip { get; set; }

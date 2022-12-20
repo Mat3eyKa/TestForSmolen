@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PurchaseOrder PurchaseOrderNumber="99503" OrderDate="2020-12-12">
+	<Address Type="Shipping">
+		<Name>Ivan Petrov</Name>
+		<Street>Nikolaev Street</Street>
+		<City>Smolensk</City>
+		<Region>Smolensk region</Region>
+		<Zip>214004</Zip>
+		<Country>Russia</Country>
+	</Address>
+	<DeliveryNotes>Desired delivery time: after 6.00 pm</DeliveryNotes>
+	<EstimatedDeliveryDate>2022-12-21</EstimatedDeliveryDate>
+	<Items>
+		<Item PartNumber="872-AA">
+			<ProductName>Christmas tree</ProductName>
+			<Quantity>1</Quantity>
+			<Price>11999</Price>
+		</Item>
+		<Item PartNumber="926-AA">
+			<ProductName>Сhristmas tree toys set</ProductName>
+			<Quantity>3</Quantity>
+			<Price>435.70</Price>
+		</Item>
+	</Items>
+</PurchaseOrder>
